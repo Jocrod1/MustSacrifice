@@ -18,13 +18,16 @@ public class Warp : MonoBehaviour {
     }
 
     IEnumerator OnTriggerEnter2D(Collider2D other) {
-        FadeIn();
-
-        yield return new WaitForSeconds(fadetime);
         if (other.tag == "Player") {
+            FadeIn();
+
+
+            yield return new WaitForSeconds(fadetime);
+
             other.transform.position = Target.transform.GetChild(0).transform.position;
+            
+            FadeOut();
         }
-        FadeOut();
     }
 
     void OnGUI() {

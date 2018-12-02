@@ -21,7 +21,7 @@ public class player : PlayerController {
         //disparo
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            var men= GameObject.Find("Game Boy Advance - The Legend of Zelda The Minish Cap - Link Cap_0");
+            var men = gameObject;
 
             if(men!= null)
             {
