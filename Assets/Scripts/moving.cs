@@ -6,10 +6,21 @@ public class moving : MonoBehaviour {
 
     private Rigidbody2D rb2d;
 
+    bool iscollision;
 	void Start () {
 
         rb2d = GetComponent<Rigidbody2D>();
 
+    }
+
+    void Update() {
+        if (iscollision)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y);
+        }
+        else {
+            rb2d.velocity = new Vector2(0, 0);
+        }
     }
 
 
@@ -18,7 +29,7 @@ public class moving : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			rb2d.isKinematic=false;
+            iscollision = true;
 		}
 
 		if (other.gameObject.tag == "Bullet")
@@ -31,7 +42,7 @@ public class moving : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			rb2d.isKinematic=true;
+            iscollision = false;
 		}
 
 
