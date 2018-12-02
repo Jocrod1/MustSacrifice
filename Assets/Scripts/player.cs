@@ -2,28 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player : MonoBehaviour {
+public class player : PlayerController {
 
 	public float speed=4F;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
 
-		Vector3 mov= new Vector3(
-			Input.GetAxisRaw("Horizontal"),
-			Input.GetAxisRaw("Vertical"),
-			0);
+    public override void LoadData()
+    {
+        base.LoadData();
+        Speed = speed;
+    }
 
+    public override void UpdateThis()
+    {
+        base.UpdateThis();
+        Direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (Direction.x != 0 && Direction.y == 0) {
+            transform.localScale = new Vector3(-Direction.x, 1, 1);
+        }
 
-	transform.position=Vector3.MoveTowards( 
-		transform.position,
-		transform.position+mov,
-		speed*Time.deltaTime);
-
-	}
+        bool ismoving = Direction != Vector2.zero;
+        Anim.SetBool("Walking", ismoving);
+        if (ismoving){
+            Anim.SetFloat("Movx", Direction.x);
+            Anim.SetFloat("Movy", Direction.y);
+        }
+    }
 }
