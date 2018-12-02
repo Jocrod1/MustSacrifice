@@ -21,6 +21,10 @@ public class moving : MonoBehaviour {
 			rb2d.isKinematic=false;
 		}
 
+		if (other.gameObject.tag == "Bullet")
+		{
+			print("hola");
+		}
 	}
 
 	void OnCollisionExit2D(Collision2D other)
@@ -29,6 +33,8 @@ public class moving : MonoBehaviour {
 		{
 			rb2d.isKinematic=true;
 		}
+
+
 
 	}
 }
