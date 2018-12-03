@@ -6,7 +6,7 @@ public class moving : MonoBehaviour {
 
     private Rigidbody2D rb2d;
 
-    bool iscollision;
+    bool iscollision = false;
 	void Start () {
 
         rb2d = GetComponent<Rigidbody2D>();
