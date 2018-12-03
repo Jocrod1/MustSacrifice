@@ -16,9 +16,11 @@ public class moving : MonoBehaviour {
     void Update() {
         if (iscollision)
         {
+            this.rb2d.isKinematic=false;
             rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y);
         }
         else {
+            this.rb2d.isKinematic=true;
             rb2d.velocity = new Vector2(0, 0);
         }
     }

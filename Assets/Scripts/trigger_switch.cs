@@ -7,11 +7,13 @@ public class trigger_switch : MonoBehaviour {
 	private bool activated_switch=false;
 	private bool enter_trigger=false;
 
+	private Animator anim;
 
-	// Use this for initialization
-	void Start () {
-		
+	void Start()
+	{
+		anim = GetComponentInParent<Animator>();
 	}
+
 	
 	// Update is called once per frame
 
@@ -36,7 +38,16 @@ public class trigger_switch : MonoBehaviour {
 
 			if(Input.GetKeyDown(KeyCode.E) && enter_trigger==true)
 			{
-				activated_switch=!activated_switch;
+				if (activated_switch==true)
+				{
+					activated_switch=false;
+					anim.SetBool("On", false);
+				}
+				else if (activated_switch==false)
+				{
+					activated_switch=true;
+					anim.SetBool("On",true);
+				}
 				print(activated_switch);
 			}
 

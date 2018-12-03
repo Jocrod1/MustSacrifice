@@ -6,6 +6,14 @@ public class distance_button : MonoBehaviour {
 
 	private bool distance_activated= false;
 
+	private Animator anim;
+
+	void Start()
+	{
+		anim = GetComponentInParent<Animator>();
+	}
+
+
 	// Use this for initialization
 	void OnCollisionEnter2D(Collision2D other)
 	{
@@ -14,7 +22,7 @@ public class distance_button : MonoBehaviour {
 		distance_activated=true;
 		print(distance_activated);
 
-		//this.gameObject.transform.=false;
+		anim.SetTrigger("Disk");
 
 
 		}
