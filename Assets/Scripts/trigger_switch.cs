@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class trigger_switch : MonoBehaviour {
+public class trigger_switch : Activable{
 
-	private bool activated_switch=false;
 	private bool enter_trigger=false;
 
 	private Animator anim;
@@ -38,17 +37,17 @@ public class trigger_switch : MonoBehaviour {
 
 			if(Input.GetKeyDown(KeyCode.E) && enter_trigger==true)
 			{
-				if (activated_switch==true)
+                if (Active == true)
 				{
-					activated_switch=false;
+                    Active = false;
 					anim.SetBool("On", false);
 				}
-				else if (activated_switch==false)
+                else if (Active == false)
 				{
-					activated_switch=true;
+                    Active = true;
 					anim.SetBool("On",true);
 				}
-				print(activated_switch);
+                print(Active);
 			}
 
 

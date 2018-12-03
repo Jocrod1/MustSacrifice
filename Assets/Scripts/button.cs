@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class button : MonoBehaviour {
+public class button : Activable {
 
-	private bool activated=false;
 	private Animator anim;
+
+    public bool IsForever;
 
 	void Start()
 	{
@@ -18,25 +19,25 @@ public class button : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Player")
 		{
-		activated=true;
+		Active=true;
 
         anim.SetBool("Press", true);
 
 
-		print(activated);
+        print(Active);
 		}
 
 	}
 
 	void OnTriggerExit2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Player")
+		if (other.gameObject.tag == "Player" && !IsForever)
 		{
-		activated=false;
+            Active = false;
 
 		anim.SetBool("Press", false);
 
-		print(activated);
+        print(Active);
 		}
 	}
 }

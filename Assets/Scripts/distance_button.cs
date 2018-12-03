@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class distance_button : MonoBehaviour {
-
-	private bool distance_activated= false;
+public class distance_button : Activable {
 
 	private Animator anim;
 
@@ -19,8 +17,8 @@ public class distance_button : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Bullet")
 		{
-		distance_activated=true;
-		print(distance_activated);
+            Active = true;
+            print(Active);
 
 		anim.SetTrigger("Disk");
 
