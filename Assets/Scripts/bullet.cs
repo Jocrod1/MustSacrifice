@@ -8,12 +8,14 @@ public class bullet : MonoBehaviour {
 
 	private Rigidbody2D rb2d;
 
+    public Vector2 Direction { get; set; }
+
 
 	// Use this for initialization
 	void Start () {
 	    rb2d = GetComponent<Rigidbody2D>();
 
-		rb2d.velocity= new Vector3(0, bullet_speed, 0);
+        rb2d.velocity = Direction * bullet_speed;
 	}
 	
 	void OnCollisionEnter2D(Collision2D other)

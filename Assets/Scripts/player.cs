@@ -8,6 +8,9 @@ public class player : PlayerController {
 
     public GameObject bullet;
 
+    Vector3 dir;
+
+    public float distance;
     public override void LoadData()
     {
         base.LoadData();
@@ -25,9 +28,9 @@ public class player : PlayerController {
 
             if(men!= null)
             {
-
-            Instantiate(bullet, new Vector3 (men.transform.position.x, men.transform.position.y + 1f, 0), Quaternion.identity);
-
+                Quaternion Angle = Quaternion.Euler(0, 0, (Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg) - 90);
+                GameObject B = Instantiate(bullet,men.transform.position + dir * distance, Angle);
+                B.GetComponent<bullet>().Direction = new Vector2(dir.x, dir.y);
             }
 
 
@@ -43,6 +46,7 @@ public class player : PlayerController {
         bool ismoving = Direction != Vector2.zero;
         Anim.SetBool("Walking", ismoving);
         if (ismoving){
+            dir = Direction;
             Anim.SetFloat("Movx", Direction.x);
             Anim.SetFloat("Movy", Direction.y);
         }
