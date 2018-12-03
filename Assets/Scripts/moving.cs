@@ -32,10 +32,6 @@ public class moving : MonoBehaviour {
             iscollision = true;
 		}
 
-		if (other.gameObject.tag == "Bullet")
-		{
-			print("hola");
-		}
 	}
 
 	void OnCollisionExit2D(Collision2D other)
