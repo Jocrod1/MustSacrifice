@@ -1,12 +1,10 @@
 fileFormatVersion: 2
-guid: 3ea37149bfc3ab942897fd912d498781
-timeCreated: 1543887153
+guid: 49df48f8f30315647bd5118b36c58b88
+timeCreated: 1543886236
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SecondIdle_0
-    21300002: SecondIdle_1
-    21300004: SecondIdle_2
+    21300000: 33499_0
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -81,39 +79,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SecondIdle_0
+      name: 33499_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 48
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: SecondIdle_1
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 0
-        width: 48
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: SecondIdle_2
-      rect:
-        serializedVersion: 2
-        x: 101
-        y: 0
-        width: 48
-        height: 29
+        x: 120
+        y: 177
+        width: 5
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
