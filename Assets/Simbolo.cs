@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Simbolo : MonoBehaviour {
+public class Simbolo : Activable {
 
 	// Use this for initialization
 	void Start () {

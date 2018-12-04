@@ -7,6 +7,7 @@ public class spawner : MonoBehaviour {
     public GameObject player1, player2, player3;
     bool a, b, c;
     public GameObject Cam;
+    public Activable s, d;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +18,7 @@ public class spawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.C)) {
+        if (Input.GetKeyDown(KeyCode.C) && (s.Active || d.Active)) {
             if (a) {
                 a = false;
                 b = true;
