@@ -32,6 +32,7 @@ public class moving : MonoBehaviour {
 		if (other.gameObject.tag == "2Player")
 		{
             iscollision = true;
+            other.gameObject.GetComponent<player>().IsMoving = true;
 		}
 
 	}
@@ -41,6 +42,7 @@ public class moving : MonoBehaviour {
 		if (other.gameObject.tag == "2Player")
 		{
             iscollision = false;
+            other.gameObject.GetComponent<player>().IsMoving = false;
 		}
 
 

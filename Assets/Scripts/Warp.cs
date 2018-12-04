@@ -11,20 +11,26 @@ public class Warp : MonoBehaviour {
     float alpha = 0;
     public float fadetime = 1f;
 
+    public FollowTarget t;
+
     float vel;
     void Awake() {
         GetComponent<SpriteRenderer>().enabled = false;
         transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        t = Camera.main.GetComponent<FollowTarget>();
     }
 
     IEnumerator OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Player") {
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "2Player" || other.gameObject.tag == "3Player")
+        {
             FadeIn();
 
 
             yield return new WaitForSeconds(fadetime);
 
             other.transform.position = Target.transform.GetChild(0).transform.position;
+
+            t.Isfade = true;
             
             FadeOut();
         }

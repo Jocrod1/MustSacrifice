@@ -15,6 +15,9 @@ public class Door : MonoBehaviour {
     BoxCollider2D ClosedCollider;
     GameObject A;
 
+    public float ShakeDuration;
+    public float ShakeMagnitude;
+
 
 	// Use this for initialization
 	void Start () {
@@ -30,6 +33,9 @@ public class Door : MonoBehaviour {
             for (int i = 0; i < BoolsToOpen.Count; i++)
             {
                 isOpen = isOpen && BoolsToOpen[i].Active;
+            }
+            if (isOpen != Open) {
+                Camera.main.GetComponent<FollowTarget>().GetDamage(ShakeDuration, ShakeMagnitude, 0, 0);
             }
             Open = isOpen;
         }

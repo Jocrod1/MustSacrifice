@@ -16,61 +16,30 @@ public class FollowTarget : MonoBehaviour {
 	public float smoothTime = .50f;
 
 
-	//enable and set the maximun Y value
-	public bool YMaxEnabled = false;
-	public float YMaxValue = 0;
-
-	//enable and set the minimum Y value
-	public bool YMinEnabled = false;
-	public float YMinValue = 0;
-
-	//enable and set the maximum X value
-	public bool XMaxEnabled = false;
-	public float XMaxValue = 0;
-
-	//enable and set the minimum X value
-	public bool XMinEnabled = false;
-	public float XMinValue = 0;
-
+    void Start() {
+    
+    }
 
 	void FixedUpdate()
 	{
 		//target position
         if(!Damaged)
 		    targetPos = target.position;
-
-		//vertical
-		if (YMinEnabled && YMaxEnabled) {
-			targetPos.y = Mathf.Clamp (target.position.y, YMinValue, YMaxValue);
-		} else if (YMinEnabled) {
-			targetPos.y = Mathf.Clamp (target.position.y, YMinValue, target.position.y); 
-			
-		} else if (YMaxEnabled) {
-			targetPos.y = Mathf.Clamp (target.position.y, target.position.y , YMaxValue); 
-		}
-
-		//horizontal
-		if (XMinEnabled && XMaxEnabled) {
-			targetPos.x = Mathf.Clamp (target.position.x, XMinValue, XMaxValue);
-		} else if (XMinEnabled) {
-			targetPos.x = Mathf.Clamp (target.position.x, XMinValue, target.position.x); 
-
-		} else if (XMaxEnabled) {
-			targetPos.x = Mathf.Clamp (target.position.x, target.position.x , XMaxValue); 
-		}
-
 		//align the camera and the targets z position
-		targetPos.z = transform.position.z;
         //using smooth damp we will gradually change the camera transform position to the target position based on the camera transform velocity and out smooth time
-        if (Shaking)
-            OriginalPos = Vector3.SmoothDamp(transform.position, targetPos + Offset, ref velocity, smoothTime);
-        else if(!Isfade)
+        if (Isfade) {
+            Isfade = false;
+            transform.position = target.position + Vector3.forward * -8.76f;
+        }
+        //else if (Shaking)
+          //  OriginalPos = Vector3.SmoothDamp(transform.position, targetPos + Offset, ref velocity, smoothTime);
+        else 
             transform.position = Vector3.SmoothDamp(transform.position, targetPos + Offset, ref velocity, smoothTime);
 
 	}
     public bool Shaking;
 
-    public bool Isfade =false;
+    public bool Isfade = false;
 
     public Vector3 OriginalPos;
 

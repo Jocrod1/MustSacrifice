@@ -4,13 +4,34 @@ using UnityEngine;
 
 public class Simbolo : Activable {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    void Start()
+    {
+
+    }
+
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "2Player" || other.gameObject.tag == "3Player" || other.gameObject.tag == "Block")
+        {
+            Active = true;
+
+
+            print(Active);
+        }
+
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if ((other.gameObject.tag == "Player" || other.gameObject.tag == "2Player" || other.gameObject.tag == "3Player" || other.gameObject.tag == "Block"))
+        {
+            Active = false;
+
+
+            print(Active);
+        }
+    }
 }
