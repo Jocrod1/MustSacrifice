@@ -17,7 +17,7 @@ public class button : Activable {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Block")
 		{
 		Active=true;
 
@@ -31,7 +31,7 @@ public class button : Activable {
 
 	void OnTriggerExit2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "Player" && !IsForever)
+        if ((other.gameObject.tag == "Player" || other.gameObject.tag == "Block") && !IsForever)
 		{
             Active = false;
 
