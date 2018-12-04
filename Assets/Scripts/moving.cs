@@ -29,7 +29,7 @@ public class moving : MonoBehaviour {
 
 		void OnCollisionEnter2D(Collision2D other)
 	{
-		if (other.gameObject.tag == "Player")
+		if (other.gameObject.tag == "2Player")
 		{
             iscollision = true;
 		}
@@ -38,7 +38,7 @@ public class moving : MonoBehaviour {
 
 	void OnCollisionExit2D(Collision2D other)
 	{
-		if (other.gameObject.tag == "Player")
+		if (other.gameObject.tag == "2Player")
 		{
             iscollision = false;
 		}
