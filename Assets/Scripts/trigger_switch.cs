@@ -35,7 +35,7 @@ public class trigger_switch : Activable{
 
 	void Update () {
 
-			if(Input.GetKeyDown(KeyCode.E) && enter_trigger==true)
+			if(Input.GetKeyDown(KeyCode.X) && enter_trigger==true)
 			{
                 if (Active == true)
 				{

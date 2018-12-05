@@ -18,6 +18,8 @@ public class player : PlayerController {
     bool Canmove = true;
     public float CoolDownTimeshoot;
     public float timeaftershoot;
+
+    public spawner Here;
     public override void LoadData()
     {
         base.LoadData();
@@ -28,8 +30,11 @@ public class player : PlayerController {
     {
         base.UpdateThis();
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+
         //disparo
-        if(Input.GetKeyDown(KeyCode.Space) && gameObject.tag == "3Player" && CoolDownTimeshoot < timer - lastshoot)
+        if(Input.GetKeyDown(KeyCode.X) && gameObject.tag == "3Player" && CoolDownTimeshoot < timer - lastshoot)
         {
             var men = gameObject;
 
@@ -77,5 +82,14 @@ public class player : PlayerController {
         Canmove = false;
         yield return new WaitForSeconds(timeaftershoot);
         Canmove = true;
+    }
+
+    public override void Dead()
+    {
+        Anim.SetTrigger("Dead");
+    }
+
+    public void Deaded() {
+        Here.StartSacrifice();
     }
 }
