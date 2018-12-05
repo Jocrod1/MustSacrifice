@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class spawner : MonoBehaviour {
 
@@ -20,11 +21,14 @@ public class spawner : MonoBehaviour {
     float smoothTime = 0.5f;
 
     float velocity;
+
+    public Image Panel;
 	// Use this for initialization
 	void Start () {
         a = true;
         b = false;
         c = false;
+        Panel = GameObject.Find("Canvas").transform.GetChild(1).GetComponent<Image>();
 	}
 	
 	// Update is called once per frame
@@ -100,29 +104,21 @@ public class spawner : MonoBehaviour {
         player2.SetActive(b);
         player3.SetActive(c);
     }
-    void OnGUI()
+    void FixedUpdate()
     {
         if (!start)
             return;
-        GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, alpha);
-
-        Texture2D tex;
-
-        tex = new Texture2D(1, 1);
-        tex.SetPixel(0, 0, Color.black);
-        tex.Apply();
-
-        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), tex);
 
         if (isfadein)
         {
-            alpha = Mathf.SmoothDamp(alpha, 1.1f, ref vel, fadetime);
+            alpha = Mathf.SmoothDamp(Panel.color.a, 1.1f, ref vel, fadetime);
         }
         else
         {
-            alpha = Mathf.SmoothDamp(alpha, -0.1f, ref vel, fadetime);
+            alpha = Mathf.SmoothDamp(Panel.color.a, -0.1f, ref vel, fadetime);
             if (alpha < 0) start = false;
         }
+        Panel.color = new Color(Panel.color.r, Panel.color.g, Panel.color.b, alpha);
     }
 
     void FadeIn()
